@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!--JDBC driver classının yerini tanımlaniyor. -->
+        <property name = "hibernate.connection.driver_class">org.postgresql.Driver</property>
+
+        <property name="connection.url">jdbc:postgresql://localhost:5432/hibernate_db</property>
+
+        <property name="connection.username">d_user</property>
+
+        <property name="connection.password">d_password</property>
+
+        <!-- belirtilen veritabanı için SQL sorgularının Hibernate tarafından oluşturulması için gereklidir -->
+        <property name = "hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
+
+        <!-- ddl.auto create ise uygulama her çalıştırıldığında schema yeniden oluşturulur.
+             update: schema silinmez değişiklik var ise güncellenir.
+             create-drop: schemanızı uygulama çalıştırıldığında oluşturuyor, sonlandığında schema siliniyor.
+             validate: schema'yı validate yapıyor.
+             none: yukarıdakilerin hiç birisini yapmıyor.
+         -->
+
+        <property name="hbm2ddl.auto">update</property>
+
+        <property name="show_sql">true</property>
+
+        <property name="format_sql">true</property>
+
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+        <property name="hibernate.cache.use_query_cache">true</property>
+
+        <property name="hibernate.cache.region.factory_class">org.hibernate.cache.jcache.internal.JCacheRegionFactory</property>
+        <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property>
+
+
+
+    <!--
+        <mapping class ="com.hb05.manytoone.Student05"/>
+        <mapping class ="com.hb05.manytoone.University"/>
+     -->
+
+
+    </session-factory>
+
+</hibernate-configuration>
